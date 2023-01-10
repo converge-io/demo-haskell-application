@@ -1,0 +1,93 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.35.1.
+--
+-- see: https://github.com/sol/hpack
+
+name:           books
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/dnikolovv/books#readme>
+homepage:       https://github.com/converge-io/demo-haskell-application#readme
+bug-reports:    https://github.com/converge-io/demo-haskell-application/issues
+author:         Dobromir Nikolov
+maintainer:     dnikolovv@hotmail.com
+copyright:      Copyright (c) 2022 Converge IO
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/converge-io/demo-haskell-application
+
+library
+  exposed-modules:
+      Books.Business.Class
+      Books.Business.Common
+      Books.Business.Logic
+      Books.Domain.Book
+      Books.Domain.BookHistory
+      Books.Domain.ISBN
+      Books.Domain.LibraryMember
+      Books.Domain.MemberBorrowHistory
+      Books.Domain.Types
+      Books.Error
+      Lib
+      Prelude
+  other-modules:
+      Paths_books
+  hs-source-dirs:
+      src
+  default-extensions:
+      GHC2021
+      LambdaCase
+      OverloadedStrings
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      base >=4.7 && <5
+    , mtl
+    , rio
+    , uuid
+  default-language: Haskell2010
+
+executable books-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_books
+  hs-source-dirs:
+      app
+  default-extensions:
+      GHC2021
+      LambdaCase
+      OverloadedStrings
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , books
+    , mtl
+    , rio
+    , uuid
+  default-language: Haskell2010
+
+test-suite books-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_books
+  hs-source-dirs:
+      test
+  default-extensions:
+      GHC2021
+      LambdaCase
+      OverloadedStrings
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , books
+    , mtl
+    , rio
+    , uuid
+  default-language: Haskell2010
