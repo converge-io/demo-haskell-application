@@ -1,3 +1,5 @@
+{-# LANGUAGE DerivingVia #-}
+
 -- | An `isbn` package exists that contains all of this but we're adding it ourselves
 -- for the sake of having a realistic example of smart constructors
 module Books.Domain.ISBN
@@ -11,17 +13,71 @@ module Books.Domain.ISBN
   )
 where
 
+import Books.ReadShow (ReadShow (..))
+import Data.Aeson (FromJSON, ToJSON)
+import Database.Persist.Postgresql (PersistField (..), PersistFieldSql)
 import qualified RIO.Char as Char
 import qualified RIO.Char.Partial as Partial
 import qualified RIO.Text as Text
 import qualified RIO.Text.Partial as Partial
+import Servant.API (FromHttpApiData, ToHttpApiData)
+import Text.Read (Read (..))
+import Web.PathPieces (PathPiece)
+import Prelude
 
 data ISBN
   = -- | An ISBN-10 value. Consists of 9 digits followed by a base-11 check digit (@0-9@ or @\'X\'@).
     ISBN10 Text
   | -- | An ISBN-13 value. Consists of 12 digits followed by a base-10 check digit (@0-9@).
     ISBN13 Text
-  deriving (Show, Eq)
+  deriving (Eq, Ord)
+  deriving
+    ( PersistFieldSql,
+      PersistField,
+      FromHttpApiData,
+      ToHttpApiData,
+      ToJSON,
+      FromJSON,
+      PathPiece
+    )
+    via (ReadShow ISBN)
+
+instance Show ISBN where
+  show = Text.unpack . renderISBN
+
+-- Explains how we read plain Text values into ISBNs
+instance Read ISBN where
+  readsPrec _ input = case mkISBN (Text.pack input) of
+    Right valid -> pure (valid, "")
+    Left err -> fail . Text.unpack $ err
+
+-- This is how we would've written the instances
+-- manually if we didn't have the ReadShow utility
+-- This doesn't include the ToJSON, FromJSON and PathPiece instance
+-- so you can imagine we're saving quite a bit of boilerplate
+
+-- Explains how we convert an ISBN to a url piece (e.g. query string)
+-- instance ToHttpApiData ISBN where
+--   toUrlPiece = tshow . unReadShow
+
+-- Explains how we parse an ISBN from a url piece (e.g. query string)
+-- instance FromHttpApiData ISBN where
+--   parseUrlPiece raw =
+--     case readEither (Text.unpack raw) of
+--       Right result -> pure . ReadShow $ result
+--       Left err -> Left (Text.pack err)
+
+-- Explains the type of the sql column when we're storing this in a database
+-- instance PersistFieldSql ISBN where
+--   -- Means "use the same type as the one Text uses"
+--   sqlType _ = sqlType $ Proxy @Text
+
+-- Explains how we can parse an ISBN from a database column
+-- instance PersistField ISBN where
+--   toPersistValue = toPersistValue . renderISBN
+--   fromPersistValue = \case
+--     (PersistText t) -> mkISBN t
+--     _ -> Left "Expected text."
 
 mkISBN :: Text -> Either Text ISBN
 mkISBN = mapLeft explainError . validateISBN

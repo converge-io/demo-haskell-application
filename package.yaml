@@ -24,9 +24,19 @@ dependencies:
 - rio
 - uuid
 - mtl
+- bytestring
+- aeson
+- servant
+- monad-logger
+- generic-lens
+- path-pieces
+- persistent
+- persistent-postgresql
+- pretty-simple
 
 default-extensions:
 - GHC2021
+- NoImplicitPrelude
 - LambdaCase
 - OverloadedStrings
 

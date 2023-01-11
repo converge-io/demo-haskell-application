@@ -1,14 +1,18 @@
 module Books.Business.Class where
 
+import Prelude
 import Books.Domain.Book (Book)
 import Books.Domain.BookHistory (BookEvent, BookHistory)
 import Books.Domain.ISBN (ISBN)
 import Books.Domain.LibraryMember (MemberProfile)
-import Books.Domain.Types (BookTitle, MemberId)
+import Books.Domain.Types (BookTitle, MemberId, MemberName)
+import Books.Domain.MemberBorrowHistory (MemberBorrowHistory)
 
 class Monad m => Library m where
   lookupISBN :: ISBN -> m (Maybe Book)
-  lookupBookHistory :: ISBN -> m (Maybe BookHistory)
+  loadBookHistory :: ISBN -> m (Maybe BookHistory)
+  loadMemberHistory :: MemberId -> m MemberBorrowHistory
   lookupMemberProfile :: MemberId -> m (Maybe MemberProfile)
+  registerMember :: MemberName -> m MemberProfile
   stockNewBook :: ISBN -> BookTitle -> m Book
   recordBookEvent :: ISBN -> BookEvent -> m ()

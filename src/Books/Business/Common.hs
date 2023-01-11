@@ -1,5 +1,6 @@
 module Books.Business.Common where
 
+import Prelude
 import Books.Error (AppError, ToAppError (toAppError))
 import Control.Monad.Except (MonadError (throwError))
 

@@ -1,5 +1,6 @@
 module Books.Business.Logic where
 
+import Prelude
 import Books.Business.Class (Library (..))
 import Books.Business.Common (runEither)
 import Books.Domain.Book (Book)
@@ -70,7 +71,7 @@ getBookHistory isbn = do
   book <- lookupISBN isbn
   case book of
     Just _ -> do
-      history <- lookupBookHistory isbn
+      history <- loadBookHistory isbn
       case history of
         Just h -> pure h
         Nothing -> do

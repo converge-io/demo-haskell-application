@@ -25,9 +25,11 @@ source-repository head
 
 library
   exposed-modules:
+      Books.Business.App
       Books.Business.Class
       Books.Business.Common
       Books.Business.Logic
+      Books.Database.Postgres.Schema
       Books.Domain.Book
       Books.Domain.BookHistory
       Books.Domain.ISBN
@@ -35,6 +37,10 @@ library
       Books.Domain.MemberBorrowHistory
       Books.Domain.Types
       Books.Error
+      Books.JsonInstances
+      Books.ReadShow
+      Books.Testing
+      Data.Has
       Lib
       Prelude
   other-modules:
@@ -43,13 +49,23 @@ library
       src
   default-extensions:
       GHC2021
+      NoImplicitPrelude
       LambdaCase
       OverloadedStrings
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
-      base >=4.7 && <5
+      aeson
+    , base >=4.7 && <5
+    , bytestring
+    , generic-lens
+    , monad-logger
     , mtl
+    , path-pieces
+    , persistent
+    , persistent-postgresql
+    , pretty-simple
     , rio
+    , servant
     , uuid
   default-language: Haskell2010
 
@@ -61,14 +77,24 @@ executable books-exe
       app
   default-extensions:
       GHC2021
+      NoImplicitPrelude
       LambdaCase
       OverloadedStrings
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      aeson
+    , base >=4.7 && <5
     , books
+    , bytestring
+    , generic-lens
+    , monad-logger
     , mtl
+    , path-pieces
+    , persistent
+    , persistent-postgresql
+    , pretty-simple
     , rio
+    , servant
     , uuid
   default-language: Haskell2010
 
@@ -81,13 +107,23 @@ test-suite books-test
       test
   default-extensions:
       GHC2021
+      NoImplicitPrelude
       LambdaCase
       OverloadedStrings
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      base >=4.7 && <5
+      aeson
+    , base >=4.7 && <5
     , books
+    , bytestring
+    , generic-lens
+    , monad-logger
     , mtl
+    , path-pieces
+    , persistent
+    , persistent-postgresql
+    , pretty-simple
     , rio
+    , servant
     , uuid
   default-language: Haskell2010
