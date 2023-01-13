@@ -38,11 +38,11 @@ library
       Books.Domain.Types
       Books.Error
       Books.JsonInstances
+      Books.Prelude
       Books.ReadShow
       Books.Testing
       Data.Has
       Lib
-      Prelude
   other-modules:
       Paths_books
   hs-source-dirs:
@@ -52,6 +52,7 @@ library
       NoImplicitPrelude
       LambdaCase
       OverloadedStrings
+      NoImplicitPrelude
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
       aeson
@@ -80,6 +81,7 @@ executable books-exe
       NoImplicitPrelude
       LambdaCase
       OverloadedStrings
+      NoImplicitPrelude
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aeson
@@ -110,6 +112,7 @@ test-suite books-test
       NoImplicitPrelude
       LambdaCase
       OverloadedStrings
+      NoImplicitPrelude
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aeson

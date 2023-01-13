@@ -4,14 +4,14 @@ import Books.Business.App (App (..), AppEnv (..))
 import qualified Books.Business.Class as Logic
 import qualified Books.Business.Logic as Logic
 import Books.Database.Postgres.Schema (PostgresConnectionPool (..), migrateBooksDb)
-import Books.Domain.ISBN (mkISBN, ISBN)
+import Books.Domain.ISBN (ISBN, mkISBN)
 import Books.Domain.Types (BookTitle (..), MemberId (..))
+import Books.Prelude
 import Control.Monad.Logger (NoLoggingT (..))
 import qualified Data.Maybe as Partial
 import qualified Data.UUID as UUID
 import Database.Persist.Postgresql (PostgresConf (..), createPostgresqlPoolWithConf, defaultPostgresConfHooks, runMigration, runSqlPool)
 import Text.Pretty.Simple (pPrint)
-import Prelude
 
 -- A module we can load in the REPL to test our application so far
 

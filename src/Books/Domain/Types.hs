@@ -5,7 +5,7 @@
 
 module Books.Domain.Types where
 
-import Prelude
+import Books.Prelude
 import Data.Aeson
   ( FromJSON,
     ToJSON,

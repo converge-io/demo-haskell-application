@@ -4,6 +4,7 @@ import Prelude
 import Books.Domain.BookHistory (BorrowPeriod)
 import Books.Domain.ISBN (ISBN)
 import Books.Domain.Types
+import Books.Prelude
 
 data MemberBorrowHistory = MemberBorrowHistory
   { currentlyBorrowedBooks :: Set CurrentlyBorrowedBook,

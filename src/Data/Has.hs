@@ -3,9 +3,9 @@
 
 module Data.Has where
 
-import Prelude
 import Data.Generics.Internal.VL.Lens as L
 import Data.Generics.Product.Typed
+import Prelude
 
 -- Describes that a certain thing contains another thing
 class Has a b where

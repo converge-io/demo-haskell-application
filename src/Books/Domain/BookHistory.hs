@@ -27,6 +27,7 @@ import qualified Data.Ord as Ord
 import Database.Persist.Postgresql (PersistField, PersistFieldSql)
 import qualified RIO.List as List
 import qualified RIO.Set as Set
+import Books.Prelude
 
 data BookHistory = BookHistory
   { isbn :: ISBN,

@@ -2,7 +2,7 @@
 
 module Books.JsonInstances where
 
-import Prelude
+import Books.Prelude
 import Data.Aeson
 import qualified Data.ByteString.Lazy.Char8 as LBS
 import Database.Persist.Sql

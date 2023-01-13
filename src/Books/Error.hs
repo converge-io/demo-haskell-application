@@ -1,7 +1,7 @@
 module Books.Error where
 
+import Books.Prelude
 import qualified RIO.Text as T
-import Prelude
 
 data AppError
   = ValidationError Text

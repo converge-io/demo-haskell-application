@@ -2,7 +2,7 @@
 
 module Books.ReadShow where
 
-import Prelude
+import Books.Prelude
 import Data.Aeson
 import Data.Aeson.Types (typeMismatch)
 import Database.Persist.Sql

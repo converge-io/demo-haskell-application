@@ -22,6 +22,7 @@ import Books.Domain.LibraryMember
 import Books.Domain.MemberBorrowHistory (CurrentlyBorrowedBook (..), MemberBorrowHistory (..))
 import Books.Domain.Types
 import Books.Error (AppError)
+import Books.Prelude
 import Control.Monad.Except (MonadError (..))
 import Data.Has (Has)
 import Database.Persist.Postgresql
@@ -34,7 +35,6 @@ import Database.Persist.Postgresql
   )
 import qualified RIO.Set as Set
 import qualified RIO.Time as IO
-import Prelude
 
 newtype AppEnv = AppEnv
   { databaseConnectionPool :: PostgresConnectionPool

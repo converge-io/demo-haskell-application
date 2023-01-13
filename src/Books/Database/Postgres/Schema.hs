@@ -17,7 +17,7 @@
 module Books.Database.Postgres.Schema where
 
 import Data.Has
-import Prelude
+import Books.Prelude
 import Books.Domain.BookHistory (BookEvent)
 import Books.Domain.ISBN (ISBN)
 import Books.Domain.Types (BookTitle, BorrowedAt, MemberId, MemberName, ReturnedAt)

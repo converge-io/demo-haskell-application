@@ -39,6 +39,7 @@ default-extensions:
 - NoImplicitPrelude
 - LambdaCase
 - OverloadedStrings
+- NoImplicitPrelude
 
 ghc-options:
 - -Wall

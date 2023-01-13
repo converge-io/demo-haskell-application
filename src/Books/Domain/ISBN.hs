@@ -13,6 +13,7 @@ module Books.Domain.ISBN
   )
 where
 
+import Books.Prelude
 import Books.ReadShow (ReadShow (..))
 import Data.Aeson (FromJSON, ToJSON)
 import Database.Persist.Postgresql (PersistField (..), PersistFieldSql)
@@ -23,7 +24,6 @@ import qualified RIO.Text.Partial as Partial
 import Servant.API (FromHttpApiData, ToHttpApiData)
 import Text.Read (Read (..))
 import Web.PathPieces (PathPiece)
-import Prelude
 
 data ISBN
   = -- | An ISBN-10 value. Consists of 9 digits followed by a base-11 check digit (@0-9@ or @\'X\'@).

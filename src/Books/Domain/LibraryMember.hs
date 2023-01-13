@@ -1,7 +1,7 @@
 module Books.Domain.LibraryMember where
 
 import Books.Domain.Types
-import Prelude (Show)
+import Books.Prelude
 
 data MemberProfile = MemberProfile
   { memberId :: MemberId,
