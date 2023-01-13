@@ -1,5 +1,7 @@
 module Books.Error where
 
+import Books.Prelude
+
 data AppError
   = ValidationError Text
   | NotFound Text

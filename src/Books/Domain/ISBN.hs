@@ -15,6 +15,7 @@ import qualified RIO.Char as Char
 import qualified RIO.Char.Partial as Partial
 import qualified RIO.Text as Text
 import qualified RIO.Text.Partial as Partial
+import Books.Prelude
 
 data ISBN
   = -- | An ISBN-10 value. Consists of 9 digits followed by a base-11 check digit (@0-9@ or @\'X\'@).

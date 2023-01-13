@@ -29,6 +29,7 @@ default-extensions:
 - GHC2021
 - LambdaCase
 - OverloadedStrings
+- NoImplicitPrelude
 
 ghc-options:
 - -Wall

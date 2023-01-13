@@ -8,6 +8,7 @@ import Books.Domain.ISBN (ISBN, renderISBN)
 import Books.Domain.Types (BookTitle, BorrowedAt (..), MemberId, ReturnedAt (..))
 import Books.Error (AppError (..))
 import Control.Monad.Except (MonadError (throwError))
+import Books.Prelude
 
 -- Note on `MonadError AppError`:
 -- Using `MonadError` over `MonadThrow` can be seen as a controversial decision.

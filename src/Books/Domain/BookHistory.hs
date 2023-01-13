@@ -15,6 +15,7 @@ import Books.Domain.ISBN (ISBN)
 import Books.Domain.Types
 import Books.Error
 import qualified RIO.Set as Set
+import Books.Prelude
 
 data BookHistory = BookHistory
   { isbn :: ISBN,

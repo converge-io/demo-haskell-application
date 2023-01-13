@@ -2,6 +2,7 @@ module Books.Business.Common where
 
 import Books.Error (AppError, ToAppError (toAppError))
 import Control.Monad.Except (MonadError (throwError))
+import Books.Prelude
 
 runEither ::
   ToAppError e =>

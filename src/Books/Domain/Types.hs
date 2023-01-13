@@ -3,6 +3,8 @@
 
 module Books.Domain.Types where
 
+import Books.Prelude
+
 -- TASK: Introduce a type NonEmptyText and force that BookTitles are always non-empty
 -- (hint: NonEmptyText should use a smart constructor to prevent empty values)
 newtype BookTitle = BookTitle Text

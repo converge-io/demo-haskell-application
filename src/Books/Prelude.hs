@@ -1,6 +1,6 @@
 {-# LANGUAGE DefaultSignatures #-}
 
-module Prelude
+module Books.Prelude
   ( module X,
     UUID,
     UTCTime,
