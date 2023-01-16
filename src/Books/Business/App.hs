@@ -55,6 +55,9 @@ newtype App a = App {runApp :: ReaderT AppEnv IO a}
       MonadReader AppEnv
     )
 
+appInIO :: AppEnv -> App a -> IO a
+appInIO env = flip runReaderT env . runApp
+
 instance MonadTime App where
   getCurrentTime = IO.getCurrentTime
 

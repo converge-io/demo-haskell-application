@@ -3,7 +3,18 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    commit: 7c564dff3574c35cae721b711bd90503b851438e
+    git: https://github.com/epicallan/servant-errors.git
+    name: servant-errors
+    pantry-tree:
+      sha256: 245a0a02daa56a9bf7791c2bf0b23ebbd06d7a467e8048859cfe1525ab42a6f7
+      size: 512
+    version: 0.1.7.0
+  original:
+    commit: 7c564dff3574c35cae721b711bd90503b851438e
+    git: https://github.com/epicallan/servant-errors.git
 snapshots:
 - completed:
     sha256: a684cdbdf9304b325a503e0fe1d9648e9c18155ce4c7cfebbe8a7f93674e6295

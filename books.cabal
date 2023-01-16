@@ -25,6 +25,7 @@ source-repository head
 
 library
   exposed-modules:
+      Books.API.Definition
       Books.Business.App
       Books.Business.Class
       Books.Business.Common
@@ -38,11 +39,11 @@ library
       Books.Domain.Types
       Books.Error
       Books.JsonInstances
+      Books.Main
       Books.Prelude
       Books.ReadShow
       Books.Testing
       Data.Has
-      Lib
   other-modules:
       Paths_books
   hs-source-dirs:
@@ -58,6 +59,7 @@ library
       aeson
     , base >=4.7 && <5
     , bytestring
+    , case-insensitive
     , generic-lens
     , monad-logger
     , mtl
@@ -67,7 +69,12 @@ library
     , pretty-simple
     , rio
     , servant
+    , servant-errors
+    , servant-server
     , uuid
+    , wai
+    , wai-extra
+    , warp
   default-language: Haskell2010
 
 executable books-exe
@@ -88,6 +95,7 @@ executable books-exe
     , base >=4.7 && <5
     , books
     , bytestring
+    , case-insensitive
     , generic-lens
     , monad-logger
     , mtl
@@ -97,7 +105,12 @@ executable books-exe
     , pretty-simple
     , rio
     , servant
+    , servant-errors
+    , servant-server
     , uuid
+    , wai
+    , wai-extra
+    , warp
   default-language: Haskell2010
 
 test-suite books-test
@@ -119,6 +132,7 @@ test-suite books-test
     , base >=4.7 && <5
     , books
     , bytestring
+    , case-insensitive
     , generic-lens
     , monad-logger
     , mtl
@@ -128,5 +142,10 @@ test-suite books-test
     , pretty-simple
     , rio
     , servant
+    , servant-errors
+    , servant-server
     , uuid
+    , wai
+    , wai-extra
+    , warp
   default-language: Haskell2010

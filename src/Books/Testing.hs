@@ -1,15 +1,15 @@
 module Books.Testing where
 
-import Books.Business.App (App (..), AppEnv (..))
-import qualified Books.Business.Class as Logic
-import qualified Books.Business.Logic as Logic
+import Books.Business.App (AppEnv (..), appInIO)
+import Books.Business.Class qualified as Logic
+import Books.Business.Logic qualified as Logic
 import Books.Database.Postgres.Schema (PostgresConnectionPool (..), migrateBooksDb)
 import Books.Domain.ISBN (ISBN, mkISBN)
 import Books.Domain.Types (BookTitle (..), MemberId (..))
 import Books.Prelude
-import Control.Monad.Logger (NoLoggingT (..))
-import qualified Data.Maybe as Partial
-import qualified Data.UUID as UUID
+import Control.Monad.Logger (runStdoutLoggingT)
+import Data.Maybe qualified as Partial
+import Data.UUID qualified as UUID
 import Database.Persist.Postgresql (PostgresConf (..), createPostgresqlPoolWithConf, defaultPostgresConfHooks, runMigration, runSqlPool)
 import Text.Pretty.Simple (pPrint)
 
@@ -19,15 +19,12 @@ getAppEnv :: IO AppEnv
 getAppEnv = do
   let connString = "host=localhost port=6543 user=postgres password=postgres dbname=books"
       postgresConf = PostgresConf connString 1 8 8
-  pool <- runNoLoggingT $ createPostgresqlPoolWithConf postgresConf defaultPostgresConfHooks
+  pool <- runStdoutLoggingT $ createPostgresqlPoolWithConf postgresConf defaultPostgresConfHooks
 
   -- Run the database migrations
   runMigration migrateBooksDb `runSqlPool` pool
 
   return $ AppEnv (PostgresConnectionPool pool)
-
-appInIO :: AppEnv -> App a -> IO a
-appInIO env = flip runReaderT env . runApp
 
 isbn :: ISBN
 (Right isbn) = mkISBN "978-3-16-148410-0"
@@ -52,9 +49,9 @@ testStuff = do
     pPrint member
 
     -- Test borrow twice
-    -- Logic.borrowBook memberId isbn
-    -- Logic.returnBook isbn
-    Logic.borrowBook testMemberId isbn
+    -- Logic.markBorrowed memberId isbn
+    -- Logic.markReturned isbn
+    Logic.markBorrowed testMemberId isbn
 
     bookHistory <- Logic.loadBookHistory isbn
     memberHistory <- Logic.loadMemberHistory testMemberId

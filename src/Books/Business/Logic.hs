@@ -28,24 +28,24 @@ import Books.Prelude
 -- TASK: The domain model currently assumes there can only be 1 instance of a book
 -- in the whole library. Make it so we can stock multiple books with the same ISBN and lend them out.
 -- (hint: look at BookHistory)
-borrowBook ::
+markBorrowed ::
   MonadError AppError m =>
   Library m =>
   MonadTime m =>
   MemberId ->
   ISBN ->
   m ()
-borrowBook borrowedBy toBorrow = do
+markBorrowed borrowedBy toBorrow = do
   now <- BorrowedAt <$> getCurrentTime
   void $ updateBookHistory toBorrow (BorrowedTo borrowedBy now)
 
-returnBook ::
+markReturned ::
   MonadError AppError m =>
   Library m =>
   MonadTime m =>
   ISBN ->
   m ()
-returnBook toReturn = do
+markReturned toReturn = do
   now <- ReturnedAt <$> getCurrentTime
   void $ updateBookHistory toReturn (Returned now)
 

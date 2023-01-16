@@ -1,14 +1,14 @@
-name:                books
-version:             0.1.0.0
-github:              "converge-io/demo-haskell-application"
-license:             BSD3
-author:              "Dobromir Nikolov"
-maintainer:          "dnikolovv@hotmail.com"
-copyright:           "Copyright (c) 2022 Converge IO"
+name: books
+version: 0.1.0.0
+github: "converge-io/demo-haskell-application"
+license: BSD3
+author: "Dobromir Nikolov"
+maintainer: "dnikolovv@hotmail.com"
+copyright: "Copyright (c) 2022 Converge IO"
 
 extra-source-files:
-- README.md
-- CHANGELOG.md
+  - README.md
+  - CHANGELOG.md
 
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
@@ -17,61 +17,67 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/dnikolovv/books#readme>
+description: Please see the README on GitHub at <https://github.com/dnikolovv/books#readme>
 
 dependencies:
-- base >= 4.7 && < 5
-- rio
-- uuid
-- mtl
-- bytestring
-- aeson
-- servant
-- monad-logger
-- generic-lens
-- path-pieces
-- persistent
-- persistent-postgresql
-- pretty-simple
+  - base >= 4.7 && < 5
+  - rio
+  - uuid
+  - mtl
+  - bytestring
+  - aeson
+  - servant
+  - servant-errors
+  - servant-server
+  - wai
+  - wai-extra
+  - warp
+  - monad-logger
+  - generic-lens
+  - path-pieces
+  - persistent
+  - persistent-postgresql
+  - pretty-simple
+  - case-insensitive
 
 default-extensions:
-- GHC2021
-- NoImplicitPrelude
-- LambdaCase
-- OverloadedStrings
-- NoImplicitPrelude
+  - GHC2021
+  - NoImplicitPrelude
+  - LambdaCase
+  - OverloadedStrings
+  - NoImplicitPrelude
 
 ghc-options:
-- -Wall
-- -Wcompat
-- -Widentities
-- -Wincomplete-record-updates
-- -Wincomplete-uni-patterns
-- -Wmissing-home-modules
-- -Wpartial-fields
-- -Wredundant-constraints
+  - -Wall
+  - -Wcompat
+  - -Widentities
+  - -Wincomplete-record-updates
+  - -Wincomplete-uni-patterns
+  - -Wmissing-home-modules
+  - -Wpartial-fields
+  - -Wredundant-constraints
 
 library:
   source-dirs: src
 
 executables:
   books-exe:
-    main:                Main.hs
-    source-dirs:         app
+    main: Main.hs
+    source-dirs: app
     ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
     dependencies:
-    - books
+      - books
 
 tests:
   books-test:
-    main:                Spec.hs
-    source-dirs:         test
+    main: Spec.hs
+    source-dirs: test
     ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
     dependencies:
-    - books
+      - books

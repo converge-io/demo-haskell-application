@@ -1,7 +1,7 @@
 module Main (main) where
 
-import Lib
-import Prelude
+import Books.Main
+import Prelude (IO)
 
 main :: IO ()
-main = someFunc
+main = runApp
